@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Daniella \ud83d\udc9c</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0d0a14;--violet:#6b21a8;--purple:#9333ea;--lavender:#c084fc;--soft:#e9d5ff;--white:#f5f0ff;--glow:rgba(147,51,234,0.4)}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--white);font-family:'Outfit',sans-serif;font-weight:300;overflow-x:hidden;cursor:none}
+.cursor{position:fixed;width:12px;height:12px;background:var(--lavender);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);mix-blend-mode:screen}
+.cursor-ring{position:fixed;width:32px;height:32px;border:1px solid var(--purple);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);mix-blend-mode:screen}
+.stars{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.star{position:absolute;border-radius:50%;background:var(--lavender);animation:twinkle var(--d,3s) ease-in-out infinite alternate}
+@keyframes twinkle{from{opacity:.1;transform:scale(.8)}to{opacity:.9;transform:scale(1.2)}}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 1.5rem;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(to bottom,rgba(13,10,20,.95),transparent)}
+.nav-logo{font-family:'Playfair Display',serif;font-style:italic;font-size:1.2rem;color:var(--lavender);cursor:none}
+.nav-links{display:flex;gap:1rem;list-style:none;flex-wrap:wrap}
+.nav-links a{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--soft);opacity:.6;text-decoration:none;transition:opacity .3s,color .3s;cursor:none}
+.nav-links a:hover{opacity:1;color:var(--lavender)}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:6rem 2rem 4rem;position:relative;z-index:1}
+.flower{position:absolute;font-size:1.8rem;pointer-events:none;animation:floatFlower var(--dur,8s) ease-in-out infinite alternate;z-index:2;user-select:none}
+@keyframes floatFlower{from{transform:translateY(0) rotate(0deg)}to{transform:translateY(-20px) rotate(15deg)}}
+.hero-eyebrow{font-size:.7rem;letter-spacing:.35em;text-transform:uppercase;color:var(--purple);margin-bottom:1.5rem;opacity:0;animation:fadeUp .8s ease .3s forwards}
+.hero-name{font-family:'Playfair Display',serif;font-size:clamp(4.5rem,15vw,11rem);font-weight:700;line-height:.9;letter-spacing:-.02em;color:var(--white);text-shadow:0 0 60px var(--glow);opacity:0;animation:fadeUp 1s ease .5s forwards}
+.hero-name span{color:var(--lavender);font-style:italic}
+.hero-sub{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(.95rem,2vw,1.25rem);color:var(--lavender);margin-top:1.5rem;opacity:0;animation:fadeUp .8s ease .9s forwards}
+.scroll-hint{margin-top:3rem;font-size:.65rem;letter-spacing:.3em;text-transform:uppercase;color:var(--purple);opacity:0;animation:fadeUp .8s ease 1.3s forwards;display:flex;flex-direction:column;align-items:center;gap:.5rem}
+.scroll-hint::after{content:'';width:1px;height:40px;background:linear-gradient(to bottom,var(--purple),transparent)}
+section{position:relative;z-index:2}
+.section-inner{max-width:720px;margin:0 auto;padding:5rem 2rem}
+.s-label{font-size:.65rem;letter-spacing:.3em;text-transform:uppercase;color:var(--purple);margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem}
+.s-label::after{content:'';flex:1;height:1px;background:rgba(147,51,234,.3)}
+.glow-line{width:80px;height:2px;background:linear-gradient(to right,transparent,var(--purple),transparent);margin:2rem auto;border-radius:2px}
+
+/* ABOUT */
+#about .inner-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:center}
+@media(max-width:600px){#about .inner-grid{grid-template-columns:1fr}}
+.about-text p{font-family:'Playfair Display',serif;font-size:clamp(1.1rem,2.5vw,1.4rem);line-height:1.75;color:var(--soft)}
+.about-text p em{color:var(--lavender);font-style:italic}
+.about-text p+p{margin-top:1.2rem}
+.stat-cards{display:flex;flex-direction:column;gap:1rem}
+.stat-card{background:rgba(107,33,168,.15);border:1px solid rgba(192,132,252,.2);border-radius:16px;padding:1.5rem;transition:transform .3s,border-color .3s}
+.stat-card:hover{transform:translateY(-4px);border-color:var(--lavender)}
+.stat-card .num{font-family:'Playfair Display',serif;font-size:2.5rem;color:var(--lavender);font-style:italic}
+.stat-card .lbl{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--purple);margin-top:.3rem}
+
+/* PHOTO */
+#photos .photo-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.2rem}
+.photo-slot{aspect-ratio:1;border-radius:20px;border:2px dashed rgba(192,132,252,.3);background:rgba(107,33,168,.08);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.8rem;transition:all .3s;position:relative;overflow:hidden}
+.photo-slot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:18px;opacity:0;transition:opacity .5s}
+.photo-slot img.loaded{opacity:1}
+.photo-slot .ph-icon{font-size:2.5rem;opacity:.4}
+.photo-slot .ph-text{font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(192,132,252,.4)}
+.photo-slot:hover{border-color:rgba(192,132,252,.6);transform:scale(1.02)}
+
+/* MEMORIES */
+.mem-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem}
+.memory-card{background:rgba(107,33,168,.1);border:1px solid rgba(192,132,252,.15);border-radius:20px;padding:2rem;cursor:none;transition:all .3s;position:relative;overflow:hidden}
+.memory-card::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(147,51,234,.18),transparent 60%);opacity:0;transition:opacity .3s}
+.memory-card:hover::before{opacity:1}
+.memory-card:hover{transform:translateY(-6px);border-color:rgba(192,132,252,.4)}
+.memory-card .icon{font-size:2rem;margin-bottom:1rem}
+.memory-card h3{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--soft);margin-bottom:.5rem}
+.memory-card p{font-size:.82rem;color:rgba(233,213,255,.6);line-height:1.6}
+
+/* TIMELINE */
+#timeline .tl-wrap{position:relative;padding-left:2rem}
+#timeline .tl-wrap::before{content:'';position:absolute;left:.5rem;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,var(--purple),var(--lavender),var(--purple),transparent)}
+.tl-item{position:relative;margin-bottom:2.5rem;padding-left:2rem}
+.tl-item::before{content:'';position:absolute;left:-.075rem;top:.4rem;width:12px;height:12px;border-radius:50%;background:var(--purple);border:2px solid var(--lavender);box-shadow:0 0 12px var(--glow);transform:translateX(-50%)}
+.tl-item:hover::before{background:var(--lavender);box-shadow:0 0 20px var(--glow)}
+.tl-year{font-size:.65rem;letter-spacing:.25em;text-transform:uppercase;color:var(--purple);margin-bottom:.3rem}
+.tl-title{font-family:'Playfair Display',serif;font-size:1.15rem;color:var(--soft);margin-bottom:.3rem}
+.tl-desc{font-size:.85rem;color:rgba(233,213,255,.55);line-height:1.6}
+
+/* MOOD BOARD */
+#moodboard .mb-wrap{position:relative;overflow:hidden;border-radius:24px;background:rgba(107,33,168,.08);border:1px solid rgba(192,132,252,.15);min-height:320px;display:flex;align-items:center;justify-content:center}
+.mb-slide{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:3rem 2rem;text-align:center;opacity:0;transform:scale(.96);transition:opacity .6s ease,transform .6s ease;pointer-events:none}
+.mb-slide.active{opacity:1;transform:scale(1);pointer-events:all}
+.mb-emoji{font-size:5rem;margin-bottom:1.5rem;display:block;animation:mbFloat 3s ease-in-out infinite alternate}
+@keyframes mbFloat{from{transform:translateY(0)}to{transform:translateY(-12px)}}
+.mb-title{font-family:'Playfair Display',serif;font-size:1.6rem;font-style:italic;color:var(--lavender);margin-bottom:.6rem}
+.mb-desc{font-size:.9rem;color:rgba(233,213,255,.6);line-height:1.6;max-width:380px}
+.mb-nav{display:flex;justify-content:center;align-items:center;gap:1rem;margin-top:1.5rem}
+.mb-btn{background:rgba(107,33,168,.3);border:1px solid rgba(192,132,252,.3);border-radius:50px;padding:.6rem 1.4rem;color:var(--lavender);font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;cursor:none;transition:all .3s}
+.mb-btn:hover{background:rgba(147,51,234,.4);border-color:var(--lavender)}
+.mb-dots{display:flex;gap:.5rem}
+.mb-dot{width:6px;height:6px;border-radius:50%;background:rgba(192,132,252,.3);transition:background .3s}
+.mb-dot.active{background:var(--lavender)}
+
+/* GIFT */
+#gift{text-align:center}
+.gift-wrap{display:flex;flex-direction:column;align-items:center}
+.gift-box{width:140px;height:140px;cursor:none;margin:2rem auto}
+.gift-inner{width:100%;height:100%;background:linear-gradient(135deg,var(--violet),var(--purple));border-radius:20px;display:flex;align-items:center;justify-content:center;font-size:4rem;box-shadow:0 0 40px var(--glow);transition:transform .3s;animation:giftPulse 2.5s ease-in-out infinite}
+.gift-inner:hover{transform:scale(1.1) rotate(-3deg)}
+@keyframes giftPulse{0%,100%{box-shadow:0 0 40px var(--glow)}50%{box-shadow:0 0 80px var(--glow),0 0 140px rgba(147,51,234,.25)}}
+.gift-hint{font-size:.8rem;color:rgba(192,132,252,.45);margin-top:.4rem;font-style:italic}
+
+/* QUIZ */
+#quiz .quiz-box{background:rgba(107,33,168,.12);border:1px solid rgba(192,132,252,.2);border-radius:24px;padding:2.5rem}
+.quiz-progress{display:flex;gap:.5rem;margin-bottom:2rem}
+.quiz-dot{flex:1;height:4px;border-radius:2px;background:rgba(192,132,252,.2);transition:background .4s}
+.quiz-dot.done{background:var(--lavender)}.quiz-dot.active{background:var(--purple)}
+.quiz-q{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--soft);margin-bottom:1.5rem;min-height:2.5rem}
+.quiz-options{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+@media(max-width:480px){.quiz-options{grid-template-columns:1fr}}
+.quiz-opt{padding:1rem;background:rgba(107,33,168,.15);border:1px solid rgba(192,132,252,.2);border-radius:12px;color:var(--soft);font-size:.9rem;cursor:none;transition:all .3s;text-align:left}
+.quiz-opt:hover{background:rgba(107,33,168,.3);border-color:var(--lavender);transform:translateY(-2px)}
+.quiz-opt.correct{background:rgba(34,197,94,.15);border-color:#4ade80;color:#86efac}
+.quiz-opt.wrong{background:rgba(239,68,68,.1);border-color:#f87171;color:#fca5a5}
+.quiz-result{text-align:center;padding:2rem 0}
+.quiz-result .score{font-family:'Playfair Display',serif;font-size:4rem;color:var(--lavender);font-style:italic}
+.quiz-result p{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--soft);margin-top:.5rem;font-style:italic}
+.quiz-restart{margin-top:1.5rem;padding:.8rem 2rem;background:rgba(107,33,168,.3);border:1px solid rgba(192,132,252,.4);border-radius:50px;color:var(--lavender);cursor:none;font-size:.8rem;letter-spacing:.15em;text-transform:uppercase;transition:all .3s}
+.quiz-restart:hover{background:rgba(147,51,234,.4)}
+
+/* LOVE LIST */
+.love-list{display:flex;flex-direction:column;gap:1rem;margin-top:1rem}
+.love-item{display:flex;align-items:center;gap:1rem;padding:1.2rem 1.5rem;background:rgba(107,33,168,.1);border:1px solid rgba(192,132,252,.12);border-radius:14px;transition:all .3s;cursor:none}
+.love-item:hover{background:rgba(107,33,168,.2);border-color:rgba(192,132,252,.35);transform:translateX(8px)}
+.love-item .li-icon{font-size:1.4rem;min-width:2rem}
+.love-item .li-text{font-family:'Playfair Display',serif;font-size:1rem;color:var(--soft)}
+
+/* GUESTBOOK */
+#guestbook .gb-entries{display:flex;flex-direction:column;gap:1rem;margin-bottom:2rem;max-height:320px;overflow-y:auto;padding-right:.5rem}
+#guestbook .gb-entries::-webkit-scrollbar{width:4px}
+#guestbook .gb-entries::-webkit-scrollbar-track{background:transparent}
+#guestbook .gb-entries::-webkit-scrollbar-thumb{background:var(--violet);border-radius:2px}
+.gb-entry{background:rgba(107,33,168,.12);border:1px solid rgba(192,132,252,.18);border-radius:16px;padding:1.2rem 1.5rem}
+.gb-entry .gb-name{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--lavender);margin-bottom:.4rem}
+.gb-entry .gb-msg{font-family:'Playfair Display',serif;font-size:1rem;color:var(--soft);line-height:1.6;font-style:italic}
+.gb-entry .gb-time{font-size:.65rem;color:rgba(192,132,252,.35);margin-top:.4rem}
+.gb-form{display:flex;flex-direction:column;gap:.8rem}
+.gb-form input,.gb-form textarea{background:rgba(107,33,168,.12);border:1px solid rgba(192,132,252,.2);border-radius:12px;padding:1rem;color:var(--white);font-family:'Outfit',sans-serif;font-size:.9rem;outline:none;transition:border-color .3s;resize:none}
+.gb-form input::placeholder,.gb-form textarea::placeholder{color:rgba(192,132,252,.35)}
+.gb-form input:focus,.gb-form textarea:focus{border-color:var(--lavender)}
+.gb-form button{align-self:flex-start;padding:.8rem 2rem;background:linear-gradient(135deg,var(--violet),var(--purple));border:none;border-radius:50px;color:var(--white);font-size:.8rem;letter-spacing:.15em;text-transform:uppercase;cursor:none;transition:opacity .3s,transform .2s;box-shadow:0 0 20px var(--glow)}
+.gb-form button:hover{opacity:.85;transform:translateY(-2px)}
+
+/* SHAKE HINT */
+#shake-hint{text-align:center;padding:1.5rem 2rem;position:relative;z-index:2}
+#shake-hint p{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(192,132,252,.4);font-style:italic}
+
+/* CONFETTI */
+.confetti-piece{position:fixed;pointer-events:none;z-index:9996;border-radius:3px;animation:confettiFall var(--cd,1.2s) ease-in forwards}
+@keyframes confettiFall{0%{opacity:1;transform:translateY(-20px) rotate(0deg)}100%{opacity:0;transform:translateY(100vh) rotate(720deg)}}
+
+/* SECRET HINT */
+#secret-hint{text-align:center;padding:2rem;position:relative;z-index:2}
+#secret-hint p{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(107,33,168,.45);font-style:italic}
+
+/* FOOTER */
+footer{text-align:center;padding:4rem 2rem 6rem;position:relative;z-index:2}
+.footer-flowers{font-size:2rem;letter-spacing:.5rem;margin-bottom:1rem;display:block;animation:floatFlower 4s ease-in-out infinite alternate}
+footer p{font-family:'Playfair Display',serif;font-style:italic;font-size:1rem;color:var(--lavender);opacity:.6}
+
+/* MODALS */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);backdrop-filter:blur(10px);z-index:500;display:flex;align-items:center;justify-content:center;padding:2rem;opacity:0;pointer-events:none;transition:opacity .4s}
+.modal-overlay.open{opacity:1;pointer-events:all}
+.modal{background:linear-gradient(135deg,#1a0f2e,#0f0a1e);border:1px solid rgba(192,132,252,.3);border-radius:24px;padding:3rem;max-width:500px;width:100%;position:relative;transform:scale(.9) translateY(20px);transition:transform .4s;box-shadow:0 0 80px rgba(107,33,168,.4)}
+.modal-overlay.open .modal{transform:scale(1) translateY(0)}
+.modal-close{position:absolute;top:1rem;right:1.2rem;background:none;border:none;color:var(--lavender);font-size:1.5rem;cursor:none;opacity:.6;transition:opacity .2s}
+.modal-close:hover{opacity:1}
+.modal h2{font-family:'Playfair Display',serif;font-size:1.8rem;font-style:italic;color:var(--lavender);margin-bottom:1.5rem}
+.modal p{font-family:'Playfair Display',serif;font-size:1.05rem;line-height:1.85;color:var(--soft)}
+.modal p+p{margin-top:1rem}
+.song-link{display:inline-flex;align-items:center;gap:.8rem;margin-top:2rem;padding:1rem 2rem;background:rgba(107,33,168,.3);border:1px solid rgba(192,132,252,.4);border-radius:50px;text-decoration:none;color:var(--lavender);font-size:.85rem;letter-spacing:.1em;transition:all .3s;cursor:none}
+.song-link:hover{background:rgba(147,51,234,.4);border-color:var(--lavender);transform:translateY(-2px)}
+
+/* SECRET PAGE */
+#secretPage{position:fixed;inset:0;background:#07040f;z-index:800;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:3rem;transform:translateY(100%);transition:transform .8s cubic-bezier(.16,1,.3,1);overflow-y:auto}
+#secretPage.open{transform:translateY(0)}
+#secretPage .sp-stars{position:absolute;inset:0;pointer-events:none}
+#secretPage .sp-content{position:relative;z-index:2;max-width:500px}
+#secretPage h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,6vw,3.5rem);font-style:italic;color:var(--lavender);margin-bottom:1.5rem;text-shadow:0 0 40px var(--glow)}
+#secretPage p{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--soft);line-height:1.8;margin-bottom:1rem}
+.sp-photo-strip{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin:2rem 0}
+.sp-photo-placeholder{width:120px;height:120px;border-radius:16px;border:2px dashed rgba(192,132,252,.3);background:rgba(107,33,168,.1);display:flex;align-items:center;justify-content:center;font-size:1.5rem;opacity:.5}
+.sp-close{margin-top:2rem;padding:.8rem 2rem;background:rgba(107,33,168,.3);border:1px solid rgba(192,132,252,.4);border-radius:50px;color:var(--lavender);cursor:none;font-size:.8rem;letter-spacing:.15em;text-transform:uppercase;transition:all .3s}
+.sp-close:hover{background:rgba(147,51,234,.4)}
+
+/* UTILS */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .9s ease,transform .9s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.particle{position:fixed;pointer-events:none;border-radius:50%;z-index:9997;animation:burst .8s ease-out forwards}
+@keyframes burst{0%{opacity:1;transform:translate(0,0) scale(1)}100%{opacity:0;transform:translate(var(--tx),var(--ty)) scale(0)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+</style>
+</head>
+<body>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<div class="stars" id="stars"></div>
+
+<nav>
+  <div class="nav-logo" id="navLogo">Daniella</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#photos">Photos</a></li>
+    <li><a href="#timeline">Timeline</a></li>
+    <li><a href="#moodboard">Vibes</a></li>
+    <li><a href="#gift">Gift</a></li>
+    <li><a href="#quiz">Quiz</a></li>
+    <li><a href="#guestbook">Write to me</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="flower" style="top:15%;left:8%;--dur:7s">\ud83c\udf38</div>
+  <div class="flower" style="top:22%;right:10%;--dur:9s">\ud83d\udc9c</div>
+  <div class="flower" style="top:72%;left:5%;--dur:11s">\ud83c\udf37</div>
+  <div class="flower" style="top:60%;right:7%;--dur:8s">\u2728</div>
+  <div class="flower" style="top:42%;left:3%;--dur:10s">\ud83c\udf3a</div>
+  <div class="flower" style="top:80%;right:12%;--dur:6s">\ud83e\udee7</div>
+  <p class="hero-eyebrow">a page made just for you</p>
+  <h1 class="hero-name">Dani<span>ella</span></h1>
+  <p class="hero-sub">the friend who lives in your phone but feels like home</p>
+  <div class="scroll-hint">scroll</div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner reveal">
+    <div class="inner-grid">
+      <div class="about-text">
+        <p class="s-label">who she is</p>
+        <p>Daniella is the kind of person who makes you feel like the most important person in the world \u2014 not because she has to, but because she just <em>does</em>.</p>
+        <p>Online friends, technically. But the distance has never once made the connection feel smaller.</p>
+      </div>
+      <div class="stat-cards">
+        <div class="stat-card"><div class="num">2\u00d7</div><div class="lbl">met in person, felt like always</div></div>
+        <div class="stat-card"><div class="num">\u221e</div><div class="lbl">things shared between us</div></div>
+        <div class="stat-card"><div class="num">1</div><div class="lbl">of a kind</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="glow-line reveal"></div>
+
+<!-- PHOTOS -->
+<section id="photos">
+  <div class="section-inner">
+    <p class="s-label reveal">us, captured</p>
+    <p class="reveal" style="font-family:'Playfair Display',serif;font-style:italic;color:rgba(192,132,252,.45);font-size:.9rem;margin-bottom:1.5rem">\ud83d\udcf8 add your photos \u2014 replace src="" with an image URL</p>
+    <div class="photo-grid reveal">
+      <div class="photo-slot"><img src="" alt=""/><span class="ph-icon">\ud83c\udf38</span><span class="ph-text">add photo</span></div>
+      <div class="photo-slot"><img src="" alt=""/><span class="ph-icon">\ud83d\udc9c</span><span class="ph-text">add photo</span></div>
+      <div class="photo-slot"><img src="" alt=""/><span class="ph-icon">\u2728</span><span class="ph-text">add photo</span></div>
+    </div>
+  </div>
+</section>
+<div class="glow-line reveal"></div>
+
+<!-- TIMELINE -->
+<section id="timeline">
+  <div class="section-inner">
+    <p class="s-label reveal">our story, in order</p>
+    <div class="tl-wrap reveal">
+      <div class="tl-item">
+        <div class="tl-year">the beginning</div>
+        <div class="tl-title">We met online \ud83d\udcac</div>
+        <div class="tl-desc">Started talking. Somehow never stopped. The kind of connection that just clicks without trying.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">high school</div>
+        <div class="tl-title">First time in person \ud83c\udfeb</div>
+        <div class="tl-desc">We were finally in the same place. Proof that online friendships are just as real as any other kind.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">ice mint</div>
+        <div class="tl-title">She left me a note \ud83c\udf66</div>
+        <div class="tl-desc">The second time we met. She left a note. Small thing \u2014 but I still think about it.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">every day</div>
+        <div class="tl-title">The updates begin \ud83d\udcf2</div>
+        <div class="tl-desc">We started telling each other everything. The big stuff. The tiny stuff. The "this just happened and you're the first person I thought of" stuff.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">first year uni</div>
+        <div class="tl-title">Still here \ud83d\udc9c</div>
+        <div class="tl-desc">New chapter, same friendship. University started, life got busier, but none of that changed anything between us.</div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="glow-line reveal"></div>
+
+<!-- MOOD BOARD -->
+<section id="moodboard">
+  <div class="section-inner">
+    <p class="s-label reveal">the vibe of us</p>
+    <div class="mb-wrap reveal">
+      <div class="mb-slide active">
+        <span class="mb-emoji">\ud83c\udf19</span>
+        <div class="mb-title">Late night talks</div>
+        <div class="mb-desc">The kind of conversations that start at midnight and end somewhere deep \u2014 where it's just honest and real and you forget what time it is.</div>
+      </div>
+      <div class="mb-slide">
+        <span class="mb-emoji">\ud83c\udf38</span>
+        <div class="mb-title">Soft but strong</div>
+        <div class="mb-desc">She's gentle the way that actually takes strength. Not loud about it. Just steady. Always steady.</div>
+      </div>
+      <div class="mb-slide">
+        <span class="mb-emoji">\ud83d\udcf1</span>
+        <div class="mb-title">Distance means nothing</div>
+        <div class="mb-desc">The Wi-Fi between us has never been the point. She's one of the most present people in my life \u2014 and she's not even in the same city.</div>
+      </div>
+      <div class="mb-slide">
+        <span class="mb-emoji">\ud83e\ude9e</span>
+        <div class="mb-title">Like myself</div>
+        <div class="mb-desc">Same wavelength. Different world. That's the only way I know how to describe what she is to me.</div>
+      </div>
+      <div class="mb-slide">
+        <span class="mb-emoji">\ud83d\udc8c</span>
+        <div class="mb-title">The little updates</div>
+        <div class="mb-desc">"Okay so this just happened\u2014" She gets those texts. She always responds. That's it. That's the whole thing.</div>
+      </div>
+    </div>
+    <div class="mb-nav">
+      <button class="mb-btn" id="mbPrev">\u2190 prev</button>
+      <div class="mb-dots" id="mbDots"></div>
+      <button class="mb-btn" id="mbNext">next \u2192</button>
+    </div>
+  </div>
+</section>
+<div class="glow-line reveal"></div>
+
+<!-- GIFT -->
+<section id="gift">
+  <div class="section-inner">
+    <div class="gift-wrap">
+      <p class="s-label reveal" style="justify-content:center;width:100%">something for you</p>
+      <p class="reveal" style="font-family:'Playfair Display',serif;font-style:italic;font-size:1.1rem;color:var(--lavender)">tap the gift, Daniella \ud83d\udc9c</p>
+      <div class="gift-box reveal" id="giftBox"><div class="gift-inner">\ud83c\udf81</div></div>
+      <p class="gift-hint reveal">a message & a song, just for you</p>
+    </div>
+  </div>
+</section>
+<div class="glow-line reveal"></div>
+
+<!-- QUIZ -->
+<section id="quiz">
+  <div class="section-inner">
+    <p class="s-label reveal">how well do you know me?</p>
+    <div class="quiz-box reveal" id="quizBox">
+      <div class="quiz-progress" id="quizProgress"></div>
+      <div class="quiz-q" id="quizQ"></div>
+      <div class="quiz-options" id="quizOpts"></div>
+      <div class="quiz-result" id="quizResult" style="display:none">
+        <div class="score" id="quizScore"></div>
+        <p id="quizMsg"></p>
+        <button class="quiz-restart" id="quizRestart">try again \ud83d\udc9c</button>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="glow-line reveal"></div>
+
+<!-- LOVE LIST -->
+<section id="love">
+  <div class="section-inner">
+    <p class="s-label reveal">why she's everything</p>
+    <div class="love-list reveal">
+      <div class="love-item"><span class="li-icon">\ud83d\udc42</span><span class="li-text">She actually listens \u2014 the real kind</span></div>
+      <div class="love-item"><span class="li-icon">\ud83d\udc8c</span><span class="li-text">She updates me on everything, I do the same</span></div>
+      <div class="love-item"><span class="li-icon">\ud83e\udd1d</span><span class="li-text">No judgement. Ever.</span></div>
+      <div class="love-item"><span class="li-icon">\ud83e\ude9e</span><span class="li-text">She feels like a version of me from a different world</span></div>
+      <div class="love-item"><span class="li-icon">\ud83c\udf19</span><span class="li-text">She's nice \u2014 genuinely, deeply nice</span></div>
+      <div class="love-item"><span class="li-icon">\ud83d\udc9c</span><span class="li-text">She makes the little stuff feel worth sharing</span></div>
+    </div>
+  </div>
+</section>
+<div class="glow-line reveal"></div>
+
+<!-- GUESTBOOK -->
+<section id="guestbook">
+  <div class="section
